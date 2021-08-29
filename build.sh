@@ -7,8 +7,8 @@ cd /tmp/rom
 SYNC_START=$(date +"%s")
 
 
-git config --global user.name GeoPD
-git config --global user.email geoemmanuelpd2001@gmail.com
+git config --global user.name TheSanty
+git config --global user.email sudhiryadav.igi@gmail.com
 
 
 # Git cookies
@@ -103,6 +103,12 @@ rom_eight(){
      source build/envsetup.sh && lunch wave_sakura-user
 }
 
+rom_nine(){
+     repo init --depth=1 --no-repo-verify -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
+     repo sync -j$(nproc --all)
+     . build/envsetup.sh && brunch lineage_whyred-user
+}
+
 recovery_one(){
      repo init --depth=1 --no-repo-verify -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
@@ -138,7 +144,7 @@ telegram_build() {
 
 # Branch name & Head commit sha for ease of tracking
 commit_sha() {
-    for repo in device/xiaomi/${T_DEVICE} vendor/xiaomi kernel/xiaomi/msm8953
+    for repo in device/xiaomi/${T_DEVICE} device/xiaomi/sdm660-common vendor/xiaomi kernel/xiaomi/sdm660
     do
 	printf "[$(echo $repo | cut -d'/' -f1 )/$(git -C ./$repo/.git rev-parse --short=10 HEAD)]"
     done
@@ -162,6 +168,8 @@ case "${rom}" in
  "POSP") rom_seven
     ;;
  "WaveOS") rom_eight
+    ;;
+ "lineage") rom_nine
     ;;
  "OFOX") recovery_one
     ;;
