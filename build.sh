@@ -26,11 +26,13 @@ ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
-     repo init --depth=1 --no-repo-verify -u git://github.com/DotOS/manifest.git -b dot11 -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
+     repo init --depth=1 --no-repo-verify -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     export SKIP_ABI_CHECKS=true
-     . build/envsetup.sh && lunch dot_sakura-user
+	 git clone https://github.com/Hycon-Devices/device_xiaomi_whyred.git device/xiaomi/whyred
+	 git clone https://github.com/Hycon-Devices/device_xiaomi_sdm660-common.git device/xiaomi/sdm660-common
+	 git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
+	 git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
+     . build/envsetup.sh && lunch aosp_whyred-user
 }
 
 rom_two(){
@@ -154,7 +156,7 @@ commit_sha() {
 
 # Function to be chose based on rom flag in .yml
 case "${rom}" in
- "dotOS") rom_one
+ "HyconOS") rom_one
     ;;
  "OctaviOS") rom_two
     ;;
@@ -211,7 +213,7 @@ ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
 case "${rom}" in
- "dotOS") make bacon -j18 2>&1 | tee build.log
+ "HyconOS") make bacon -j18 2>&1 | tee build.log
     ;;
  "OctaviOS") mka octavi -j18 2>&1 | tee build.log
     ;;
