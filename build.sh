@@ -106,6 +106,7 @@ rom_eight(){
 rom_nine(){
      repo init --depth=1 --no-repo-verify -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
      repo sync -j$(nproc --all)
+     git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
      . build/envsetup.sh && brunch lineage_whyred-user
 }
 
