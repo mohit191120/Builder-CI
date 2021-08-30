@@ -26,8 +26,8 @@ ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
-     repo init -u https://github.com/HyconOS/manifest -b eleven
-     repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+     repo init --depth=1 --no-repo-verify -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://github.com/Hycon-Devices/device_xiaomi_whyred.git device/xiaomi/whyred
      git clone https://github.com/Hycon-Devices/device_xiaomi_sdm660-common.git device/xiaomi/sdm660-common
      git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
