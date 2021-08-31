@@ -13,7 +13,7 @@ task:
     BOTTOKEN: "ENCRYPTED[9776e01bfefaaca25580479125ac3f5e4fab9aa95ca2e6d58a2b801e0cc5447496ebfa9d13e225e82388fabeb4eacb2d]"
     GIT_COOKIES: "ENCRYPTED[dd74447420dbeeb41d1605db712f627b3480d2763ea700255bfbbc255d8a2b3150224ec3b5339b3cbb410c9f03152ad2]"
     TDRIVE: "ENCRYPTED[da94f93182e476150bbfb7eec5c3e1ee0ee93022819fc4e66ec260e30cebb96e057856dcb0e20b8479a17567efde9c4b]"
-    rom: "HyconOS"
+    rom: "CorvusOS"
     T_DEVICE: "whyred"
   download_cc_background_script:
       - bash download_ccache.sh
