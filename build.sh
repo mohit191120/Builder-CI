@@ -40,7 +40,7 @@ rom_two(){
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://github.com/TheSanty/device_xiaomi_whyred.git device/xiaomi/whyred
      git clone https://github.com/TheSanty/device_xiaomi_sdm660-common.git -b 11 device/xiaomi/sdm660-common
-     git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
+     git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/sdm660
      git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
      rm -rf hardware/qcom-caf/msm8998/display
      rm -rf hardware/qcom-caf/msm8998/audio
