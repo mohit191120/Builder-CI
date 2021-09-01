@@ -30,7 +30,7 @@ rom_one(){
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://github.com/Hycon-Devices/device_xiaomi_whyred.git device/xiaomi/whyred
      git clone https://github.com/Hycon-Devices/device_xiaomi_sdm660-common.git device/xiaomi/sdm660-common
-     git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
+     git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/sdm660
      git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
      . build/envsetup.sh && lunch aosp_whyred-user
 }
