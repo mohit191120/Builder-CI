@@ -38,13 +38,16 @@ rom_one(){
 rom_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/Corvus-R/android_manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-	git clone https://github.com/TheSanty/device_xiaomi_whyred.git device/xiaomi/whyred
+     git clone https://github.com/TheSanty/device_xiaomi_whyred.git device/xiaomi/whyred
      git clone https://github.com/TheSanty/device_xiaomi_sdm660-common.git -b 11 device/xiaomi/sdm660-common
-	 git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
+     git clone https://github.com/fernandobouchet/Whyred.git kernel/xiaomi/sdm660
      git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
-	 git clone https://github.com/LineageOS/android_hardware_qcom_display.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/display
-	 git clone https://github.com/LineageOS/android_hardware_qcom_audio.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/audio
-	 git clone https://github.com/LineageOS/android_hardware_qcom_media.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/media
+     rm -rf hardware/qcom-caf/msm8998/display
+     rm -rf hardware/qcom-caf/msm8998/audio
+     rm -rf hardware/qcom-caf/msm8998/media
+     git clone https://github.com/LineageOS/android_hardware_qcom_display.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/display
+     git clone https://github.com/LineageOS/android_hardware_qcom_audio.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/audio
+     git clone https://github.com/LineageOS/android_hardware_qcom_media.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/media
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
