@@ -42,12 +42,6 @@ rom_two(){
      git clone https://github.com/TheSanty/device_xiaomi_sdm660-common.git -b 11 device/xiaomi/sdm660-common
      git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/sdm660
      git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
-     rm -rf hardware/qcom-caf/msm8998/display
-     rm -rf hardware/qcom-caf/msm8998/audio
-     rm -rf hardware/qcom-caf/msm8998/media
-     git clone https://github.com/LineageOS/android_hardware_qcom_display.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/display
-     git clone https://github.com/LineageOS/android_hardware_qcom_audio.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/audio
-     git clone https://github.com/LineageOS/android_hardware_qcom_media.git -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/media
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
