@@ -37,11 +37,8 @@ rom_one(){
 
 rom_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/Corvus-R/android_manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     git clone https://github.com/TheSanty/device_xiaomi_whyred.git device/xiaomi/whyred
-     git clone https://github.com/TheSanty/device_xiaomi_sdm660-common.git -b 11_old device/xiaomi/sdm660-common
-     git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/sdm660
-     git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
