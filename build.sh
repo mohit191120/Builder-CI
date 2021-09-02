@@ -217,7 +217,7 @@ ccache -z
 case "${rom}" in
  "HyconOS") mka bacon 2>&1 | tee build.log
     ;;
- "CorvusOS") make corvus 2>&1 | tee build.log
+ "CorvusOS") make corvus -j18 2>&1 | tee build.log
     ;;
  "P404") m p404 -j18 2>&1 | tee build.log
     ;;
