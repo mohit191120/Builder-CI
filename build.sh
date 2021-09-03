@@ -43,18 +43,10 @@ rom_two(){
 }
 
 rom_three(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/P-404/platform_manifest -b rippa -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
-     git config --global url.https://source.codeaurora.org.insteadOf git://codeaurora.org
-     curl -L http://source.codeaurora.org/platform/manifest/clone.bundle > /dev/null
-     sed -i 's/source.codeaurora.org/oregon.source.codeaurora.org/g' .repo/manifests/default.xml
+     repo init --depth=1 --no-repo-verify -u https://github.com/CherishOS/android_manifest.git -b eleven -g default,-device,-mips,-darwin,-notdefault
+	 git clone https://github.com/YadavMohit19/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     wget https://raw.githubusercontent.com/geopd/misc/master/gms-vendor.mk && mv gms-vendor.mk vendor/google/gms/gms-vendor.mk
-     sed -i '107 i \\t"ccache":  Allowed,' build/soong/ui/build/paths/config.go
-     sed -i '91s/error/warning/g' system/sepolicy/Android.mk
-     export SELINUX_IGNORE_NEVERALLOWS=true
-     export SKIP_ABI_CHECKS=true
-     source build/envsetup.sh && lunch p404_sakura-user
+     source build/envsetup.sh && lunch cherish_sakura-userdebug
 }
 
 rom_four(){
@@ -159,7 +151,7 @@ case "${rom}" in
     ;;
  "CorvusOS") rom_two
     ;;
- "P404") rom_three
+ "CherishOS") rom_three
     ;;
  "RR") rom_four
     ;;
@@ -212,11 +204,11 @@ ccache -z
 
 # Build commands for each roms on basis of rom flag in .yml / an additional full build.log is kept.
 case "${rom}" in
- "HyconOS") mka bacon 2>&1 | tee build.log
+ "HyconOS") mka bacon -j18 2>&1 | tee build.log
     ;;
  "CorvusOS") make corvus -j18 2>&1 | tee build.log
     ;;
- "P404") m p404 -j18 2>&1 | tee build.log
+ "CherishOS") mka bacon -j18 2>&1 | tee build.log
     ;;
  "RR") mka bacon -j18 2>&1 | tee build.log
     ;;
