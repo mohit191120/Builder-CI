@@ -50,12 +50,11 @@ rom_three(){
 }
 
 rom_four(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/ResurrectionRemix/platform_manifest.git -b Q -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
-     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     sed -i '79 i \\t"ccache":  Allowed,' build/soong/ui/build/paths/config.go
-     export RR_BUILDTYPE=Official
-     . build/envsetup.sh && lunch rr_sakura-userdebug
+     repo init --depth=1 --no-repo-verify -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+	 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+	 git clone https://github.com/TheSanty/android_device_xiaomi_whyred.git device/xiaomi/whyred
+     export ALLOW_MISSING_DEPENDENCIES=true
+     . build/envsetup.sh && lunch aosp_whyred-eng
 }
 
 rom_five(){
@@ -153,7 +152,7 @@ case "${rom}" in
     ;;
  "CherishOS") rom_three
     ;;
- "RR") rom_four
+ "Hycon") rom_four
     ;;
  "dotOS-TEST") rom_five
     ;;
@@ -210,7 +209,7 @@ case "${rom}" in
     ;;
  "CherishOS") mka bacon -j18 2>&1 | tee build.log
     ;;
- "RR") mka bacon -j18 2>&1 | tee build.log
+ "Hycon") mka bacon -j18 2>&1 | tee build.log
     ;;
  "dotOS-TEST") make bacon -j18 2>&1 | tee build.log
     ;;
