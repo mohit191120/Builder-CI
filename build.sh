@@ -103,7 +103,7 @@ rom_nine(){
 }
 
 recovery_one(){
-     repo init --depth=1 --no-repo-verify -u https://gitlab.com/PitchBlackRecoveryProject/manifest_pb.git -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u https://gitlab.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export ALLOW_MISSING_DEPENDENCIES=true
@@ -219,7 +219,7 @@ case "${rom}" in
     ;;
  "WaveOS") make bacon -j18 2>&1 | tee build.log
     ;;
- "OFOX") make recoveryimage -j10 2>&1 | tee build.log
+ "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
  "OFOX2") make recoveryimage -j10 2>&1 | tee build.log
     ;;
