@@ -103,15 +103,15 @@ rom_nine(){
 }
 
 recovery_one(){
-     repo init --depth=1 --no-repo-verify -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0 -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
+     repo init --depth=1 --no-repo-verify -u https://gitlab.com/OrangeFox/Manifest_pb.git -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export ALLOW_MISSING_DEPENDENCIES=true
-     source build/envsetup.sh && lunch omni_daisa-eng
+     source build/envsetup.sh && lunch omni_sakura-eng
 }
 
 recovery_two(){
-     repo init --depth=1 --no-repo-verify -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0 -g default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u https://gitlab.com/PitchBlackRecoveryProject/manifest.git -b fox_9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      source build/envsetup.sh && lunch omni_daisy-eng
@@ -164,7 +164,7 @@ case "${rom}" in
     ;;
  "lineage") rom_nine
     ;;
- "OFOX") recovery_one
+ "PBRP") recovery_one
     ;;
  "OFOX2") recovery_two
     ;;
