@@ -103,7 +103,7 @@ rom_nine(){
 }
 
 recovery_one(){
-     repo init --depth=1 --no-repo-verify -u https://gitlab.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export ALLOW_MISSING_DEPENDENCIES=true
