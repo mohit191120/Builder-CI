@@ -31,6 +31,7 @@ rom_one(){
      git clone https://github.com/TheSanty/android_device_xiaomi_whyred.git device/xiaomi/whyred
      git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/whyred
      git clone https://github.com/ItsVixano/android_vendor_xiaomi_whyred.git vendor/xiaomi/whyred
+	 git clone https://github.com/TheSanty/vendor_XiaomiParts.git vendor/XiaomiParts
      . build/envsetup.sh && lunch aosp_whyred-user
 }
 
