@@ -27,17 +27,16 @@ ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     git clone https://github.com/TheSanty/android_device_xiaomi_whyred.git device/xiaomi/whyred
-     git clone https://github.com/fernandobouchet/Whyred.git -b extended-eas kernel/xiaomi/whyred
-     git clone https://github.com/ItsVixano/android_vendor_xiaomi_whyred.git vendor/xiaomi/whyred
-	 git clone https://github.com/TheSanty/vendor_XiaomiParts.git vendor/XiaomiParts
      . build/envsetup.sh && lunch aosp_whyred-user
 }
 
 rom_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/Corvus-R/android_manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     git clone https://${TOKEN}@github.com/Corvus-R/.certs certs
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
