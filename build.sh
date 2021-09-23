@@ -37,6 +37,7 @@ rom_two(){
      git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://${TOKEN}@github.com/Corvus-R/.certs certs
+	 export RAVEN_LAIR=Official
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
