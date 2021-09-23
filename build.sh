@@ -80,7 +80,7 @@ rom_seven(){
      repo init --depth=1 --no-repo-verify -u https://github.com/ProtonAOSP/android_manifest -b rvc -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     . build/envsetup.sh && lunch sakura-user
+     . build/envsetup.sh && lunch sakura-eng
 }
 
 rom_eight(){
