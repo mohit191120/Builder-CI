@@ -77,12 +77,10 @@ rom_six(){
 }
 
 rom_seven(){
-     repo init --depth=1 --no-repo-verify -u  https://github.com/ProtonAOSP/android_manifest -b rvc default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u https://github.com/ProtonAOSP/android_manifest -b rvc -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     sed -i '79 i \\t"ccache":  Allowed,' build/soong/ui/build/paths/config.go
-     export SKIP_ABI_CHECKS=true
-     source build/envsetup.sh && lunch sakura-userdebug
+     . build/envsetup.sh && lunch sakura-user
 }
 
 rom_eight(){
@@ -157,7 +155,7 @@ case "${rom}" in
     ;;
  "AOSPA") rom_six
     ;;
- "posp") rom_seven
+ "proton") rom_seven
     ;;
  "WaveOS") rom_eight
     ;;
@@ -214,7 +212,7 @@ case "${rom}" in
     ;;
  "AOSPA") m bacon -j10 2>&1 | tee build.log
     ;;
- "posp") m 2>&1 | tee build.log
+ "proton") m 2>&1 | tee build.log
     ;;
  "WaveOS") make bacon -j18 2>&1 | tee build.log
     ;;
