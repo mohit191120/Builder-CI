@@ -81,7 +81,7 @@ rom_seven(){
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
        export ALLOW_MISSING_DEPENDENCIES=true
-     . build/envsetup.sh && lunch sakura-eng
+     . build/envsetup.sh && lunch aosp_sakura-eng
 }
 
 rom_eight(){
