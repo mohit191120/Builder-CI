@@ -13,8 +13,8 @@ task:
     BOTTOKEN: "ENCRYPTED[9776e01bfefaaca25580479125ac3f5e4fab9aa95ca2e6d58a2b801e0cc5447496ebfa9d13e225e82388fabeb4eacb2d]"
     GIT_COOKIES: "ENCRYPTED[dd74447420dbeeb41d1605db712f627b3480d2763ea700255bfbbc255d8a2b3150224ec3b5339b3cbb410c9f03152ad2]"
     TDRIVE: "ENCRYPTED[7c27ee21ab2fade486468332b02b24a1f394f1bfd01b891e849ab6b42391c9aae95596d8492bd0381a8cbdefe7fec153]"
-    rom: "proton"
-    T_DEVICE: "sakura"
+    rom: "HyconOS"
+    T_DEVICE: "whyred"
   download_cc_background_script:
       - bash download_ccache.sh
   upload_cc_background_script:
