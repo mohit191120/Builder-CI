@@ -94,10 +94,10 @@ rom_eight(){
 }
 
 rom_nine(){
-     repo init --depth=1 --no-repo-verify -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
-     repo sync -j$(nproc --all)
-     git clone https://github.com/TheSanty/vendor_xiaomi.git vendor/xiaomi
-     . build/envsetup.sh && brunch lineage_whyred-user
+     repo init --depth=1 --no-repo-verify -u https://github.com/Evolution-X/manifest -b elle -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     . build/envsetup.sh && lunch evolution_whyred-user
 }
 
 recovery_one(){
@@ -160,7 +160,7 @@ case "${rom}" in
     ;;
  "WaveOS") rom_eight
     ;;
- "lineage") rom_nine
+ "EvolutionOS") rom_nine
     ;;
  "PBRP") recovery_one
     ;;
@@ -215,7 +215,7 @@ case "${rom}" in
     ;;
  "proton") m 2>&1 | tee build.log
     ;;
- "WaveOS") make bacon -j18 2>&1 | tee build.log
+ "EvolutionOS") mka evolution -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
