@@ -112,6 +112,7 @@ recovery_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-11.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b RMX3031 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     export ALLOW_MISSING_DEPENDENCIES=true
      source build/envsetup.sh && lunch omni_RMX3031-eng
 }
 
