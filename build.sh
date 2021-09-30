@@ -164,7 +164,7 @@ case "${rom}" in
     ;;
  "PBRP") recovery_one
     ;;
- "PBRP") recovery_two
+ "PB") recovery_two
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -219,7 +219,7 @@ case "${rom}" in
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
- "PBRP") make recoveryimage -j10 2>&1 | tee build.log
+ "PB") make recoveryimage -j10 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
