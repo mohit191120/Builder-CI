@@ -109,10 +109,10 @@ recovery_one(){
 }
 
 recovery_two(){
-     repo init --depth=1 --no-repo-verify -u https://gitlab.com/PitchBlackRecoveryProject/manifest.git -b fox_9.0 -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
+     repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-11.0 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b RMX3031 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     source build/envsetup.sh && lunch omni_daisy-eng
+     source build/envsetup.sh && lunch omni_RMX3031-eng
 }
 
 
@@ -164,7 +164,7 @@ case "${rom}" in
     ;;
  "PBRP") recovery_one
     ;;
- "OFOX2") recovery_two
+ "PBRP") recovery_two
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -219,7 +219,7 @@ case "${rom}" in
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
- "OFOX2") make recoveryimage -j10 2>&1 | tee build.log
+ "PBRP") make recoveryimage -j10 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
