@@ -113,7 +113,7 @@ recovery_two(){
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b RMX3031 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export ALLOW_MISSING_DEPENDENCIES=true
-     source build/envsetup.sh && lunch omni_RMX3031-eng
+     source build/envsetup.sh && lunch pb_RMX3031-eng
 }
 
 
