@@ -18,12 +18,7 @@ zst_tar ()
 # Let session sleep on error for debug
 sleep_on_error()
 {
- if [ -f $(pwd)/rom/out/target/product/${T_DEVICE}/${ZIPNAME} ]; then
 	zst_tar ccache
- else
-	zst_tar ccache
-	sleep 2h
- fi
 }
 
 sleep_on_error
