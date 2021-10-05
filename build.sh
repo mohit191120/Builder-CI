@@ -15,7 +15,6 @@ git config --global user.email "sudhiryadav.igi@gmail.com"
 echo "${GIT_COOKIES}" > ~/git_cookies.sh
 bash ~/git_cookies.sh
 
-
 # SSH
 rclone copy brrbrr:ssh/ssh_ci /tmp
 sudo chmod 0600 /tmp/ssh_ci
@@ -100,6 +99,13 @@ rom_nine(){
      . build/envsetup.sh && lunch evolution_whyred-user
 }
 
+rom_ten(){
+     repo init --depth=1 --no-repo-verify -u https://android.googlesource.com/platform/manifest -b android12-release -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     . build/envsetup.sh && lunch aosp_whyred-eng
+}
+
 recovery_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
@@ -163,6 +169,8 @@ case "${rom}" in
     ;;
  "EvolutionOS") rom_nine
     ;;
+ "aosp") rom_ten
+    ;;
  "PBRP") recovery_one
     ;;
  "PB") recovery_two
@@ -217,6 +225,8 @@ case "${rom}" in
  "proton") m 2>&1 | tee build.log
     ;;
  "EvolutionOS") mka evolution -j18 2>&1 | tee build.log
+    ;;
+ "aosp") make bacon -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
