@@ -106,6 +106,13 @@ rom_ten(){
      . build/envsetup.sh && lunch aosp_whyred-userdebug
 }
 
+rom_eleven(){
+     repo init --depth=1 --no-repo-verify -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r2 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     . build/envsetup.sh && lunch aosp_sakura-userdebug
+}
+
 recovery_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
@@ -171,7 +178,9 @@ case "${rom}" in
     ;;
  "aosp") rom_ten
     ;;
- "PBRP") recovery_one
+ "12") rom_eleven
+    ;;
+"PBRP") recovery_one
     ;;
  "PB") recovery_two
     ;;
@@ -228,7 +237,9 @@ case "${rom}" in
     ;;
  "aosp") make bacon -j18 2>&1 | tee build.log
     ;;
- "PBRP") make recoveryimage 2>&1 | tee build.log
+ "12") make bacon -j18 2>&1 | tee build.log
+    ;;
+"PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
  "PB") make recoveryimage -j10 2>&1 | tee build.log
     ;;
