@@ -100,9 +100,9 @@ rom_nine(){
 }
 
 rom_ten(){
-     repo init --depth=1 --no-repo-verify -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r2 -g default,-device,-mips,-darwin,-notdefault
-     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
-     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     repo init --depth=1 -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r2
+     repo sync
+     wget https://the.santy.workers.dev/0:/babu.sh && bash babu.sh
      . build/envsetup.sh && lunch aosp_whyred-userdebug
 }
 
