@@ -235,7 +235,7 @@ case "${rom}" in
     ;;
  "EvolutionOS") mka evolution -j18 2>&1 | tee build.log
     ;;
- "aosp") make bacon -j18 2>&1 | tee build.log
+ "aosp") m -j18 2>&1 | tee build.log
     ;;
  "12") make bacon -j18 2>&1 | tee build.log
     ;;
