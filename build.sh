@@ -102,10 +102,10 @@ rom_ten(){
 }
 
 rom_eleven(){
-     repo init --depth=1 --no-repo-verify -u https://android.googlesource.com/platform/manifest -b android-12.0.0_r2 -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
+     repo init --depth=1 --no-repo-verify -u https://github.com/PotatoProject/manifest -b frico-release -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     . build/envsetup.sh && lunch aosp_sakura-userdebug
+     . build/envsetup.sh && lunch potato_whyred-userdebug
 }
 
 recovery_one(){
@@ -173,9 +173,9 @@ case "${rom}" in
     ;;
  "aosp") rom_ten
     ;;
- "12") rom_eleven
+ "POSP") rom_eleven
     ;;
-"PBRP") recovery_one
+ "PBRP") recovery_one
     ;;
  "PB") recovery_two
     ;;
@@ -232,9 +232,9 @@ case "${rom}" in
     ;;
  "aosp") m -j18 2>&1 | tee build.log
     ;;
- "12") make bacon -j18 2>&1 | tee build.log
+ "POSP") brunch whyred -j18 2>&1 | tee build.log
     ;;
-"PBRP") make recoveryimage 2>&1 | tee build.log
+ "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
  "PB") make recoveryimage -j10 2>&1 | tee build.log
     ;;
