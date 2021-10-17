@@ -232,7 +232,7 @@ case "${rom}" in
     ;;
  "aosp") m -j18 2>&1 | tee build.log
     ;;
- "POSP") brunch whyred -j18 2>&1 | tee build.log
+ "POSP") make bacon -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
