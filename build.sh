@@ -64,15 +64,13 @@ rom_five(){
 }
 
 rom_six(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/AOSPA/manifest -b ruby -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
-     git config --global url.https://source.codeaurora.org.insteadOf git://codeaurora.org
-     curl -L http://source.codeaurora.org/platform/manifest/clone.bundle > /dev/null
-     sed -i 's/source.codeaurora.org/oregon.source.codeaurora.org/g' .repo/manifests/default.xml
+     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Fluid/manifest.git -b fluid-12 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b 12 .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      sed -i '104 i \\t"ccache":  Allowed,' build/soong/ui/build/paths/config.go
      export SKIP_ABI_CHECKS=true
-     . build/envsetup.sh && lunch pa_sakura-user
+     export ALLOW_MISSING_DEPENDENCIES=true
+     . build/envsetup.sh && lunch fluid_sakura-eng
 }
 
 rom_seven(){
@@ -168,7 +166,7 @@ case "${rom}" in
     ;;
  "corvus") rom_five
     ;;
- "AOSPA") rom_six
+ "fluid") rom_six
     ;;
  "proton") rom_seven
     ;;
@@ -229,7 +227,7 @@ case "${rom}" in
     ;;
  "corvus") make corvus 2>&1 | tee build.log
     ;;
- "AOSPA") m bacon -j10 2>&1 | tee build.log
+ "fluid") make bacon / brunch sakura 2>&1 | tee build.log
     ;;
  "proton") m 2>&1 | tee build.log
     ;;
