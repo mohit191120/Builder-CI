@@ -227,7 +227,7 @@ case "${rom}" in
     ;;
  "corvus") make corvus 2>&1 | tee build.log
     ;;
- "fluid") make bacon / brunch sakura 2>&1 | tee build.log
+ "fluid") mka bacon 2>&1 | tee build.log
     ;;
  "proton") m 2>&1 | tee build.log
     ;;
