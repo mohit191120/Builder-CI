@@ -108,6 +108,13 @@ rom_eleven(){
      source build/envsetup.sh && lunch potato_whyred-userdebug
 }
 
+rom_twelve(){
+     repo init --depth=1 --no-repo-verify -u https://github.com/Project-Awaken/android_manifest -b 12 -g default,-device,-mips,-darwin,-notdefault
+     git clone https://github.com/TheSanty/local_manifests.git -b $rom .repo/local_manifests
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     source build/envsetup.sh && lunch awaken_whyred-userdebug
+}
+
 recovery_one(){
      repo init --depth=1 --no-repo-verify -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-9.0 -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
@@ -175,6 +182,8 @@ case "${rom}" in
     ;;
  "POSP") rom_eleven
     ;;
+ "AwakenOS") rom_twelve
+    ;;
  "PBRP") recovery_one
     ;;
  "PB") recovery_two
@@ -233,6 +242,8 @@ case "${rom}" in
  "aosp") m -j18 2>&1 | tee build.log
     ;;
  "POSP") brunch whyred -j18 2>&1 | tee build.log
+    ;;
+ "AwakenOS") make bacon -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
