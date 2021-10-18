@@ -242,7 +242,7 @@ case "${rom}" in
     ;;
  "aosp") m -j18 2>&1 | tee build.log
     ;;
- "POSP") mka bacon -j18 2>&1 | tee build.log
+ "POSP") brunch whyred -j18 2>&1 | tee build.log
     ;;
  "AwakenOS") make bacon -j18 2>&1 | tee build.log
     ;;
