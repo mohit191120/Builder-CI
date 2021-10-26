@@ -37,7 +37,6 @@ rom_two(){
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://${TOKEN}@github.com/Corvus-R/.certs certs
      export RAVEN_LAIR=Official
-     export USE_GAPPS=true
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
