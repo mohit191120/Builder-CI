@@ -37,12 +37,13 @@ rom_two(){
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      git clone https://${TOKEN}@github.com/Corvus-R/.certs certs
      export RAVEN_LAIR=Official
+     export USE_DEXOPT=true
      . build/envsetup.sh && lunch corvus_whyred-user
 }
 
 rom_three(){
      repo init --depth=1 --no-repo-verify -u https://github.com/CherishOS/android_manifest.git -b eleven -g default,-device,-mips,-darwin,-notdefault
-	 git clone https://github.com/YadavMohit19/local_manifests.git -b $rom .repo/local_manifests
+     git clone https://github.com/YadavMohit19/local_manifests.git -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export WITH_GMS=true
      source build/envsetup.sh && lunch cherish_sakura-userdebug
@@ -50,8 +51,8 @@ rom_three(){
 
 rom_four(){
      repo init --depth=1 --no-repo-verify -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
-	 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-	 git clone https://github.com/TheSanty/android_device_xiaomi_whyred.git device/xiaomi/whyred
+     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
+     git clone https://github.com/TheSanty/android_device_xiaomi_whyred.git device/xiaomi/whyred
      export ALLOW_MISSING_DEPENDENCIES=true
      . build/envsetup.sh && lunch aosp_whyred-eng
 }
@@ -77,7 +78,7 @@ rom_seven(){
      repo init --depth=1 --no-repo-verify -u https://github.com/ProtonAOSP/android_manifest -b rvc -g default,-device,-mips,-darwin,-notdefault
      git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b $rom .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-       export ALLOW_MISSING_DEPENDENCIES=true && export ALLOW_NINJA_ENV=false
+     export ALLOW_MISSING_DEPENDENCIES=true && export ALLOW_NINJA_ENV=false
      . build/envsetup.sh && lunch aosp_sakura-eng
 }
 
