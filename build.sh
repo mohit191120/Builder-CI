@@ -248,7 +248,7 @@ case "${rom}" in
     ;;
  "POSP") brunch whyred -j18 2>&1 | tee build.log
     ;;
- "Evo")  make evolution -j18 2>&1 | tee build.log
+ "Evo")  mka evolution -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
