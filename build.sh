@@ -88,7 +88,7 @@ rom_eight(){
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
      export ALLOW_MISSING_DEPENDENCIES=true
      #export SKIP_ABI_CHECKS=true
-     source build/envsetup.sh && lunch evolution_RMX3031-eng
+     . build/envsetup.sh && lunch evolution_RMX3031-eng
 }
 
 rom_nine(){
