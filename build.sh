@@ -83,12 +83,12 @@ rom_seven(){
 }
 
 rom_eight(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/Wave-Project/manifest -b r -g default,-device,-mips,-darwin,-notdefault
-     git clone https://${TOKEN}@github.com/geopd/local_manifests -b $rom .repo/local_manifests
+     repo init --depth=1 --no-repo-verify -u https://github.com/Evolution-X/manifest -b elle -g default,-device,-mips,-darwin,-notdefault
+     git clone https://${TOKEN}@github.com/YadavMohit19/local_manifests -b evo .repo/local_manifests
      repo sync -c --no-clone-bundle --no-tags --optimized-fetch --force-sync -j$(nproc --all)
-     sed -i '78 i \\t"ccache":  Allowed,' build/soong/ui/build/paths/config.go
-     export SKIP_ABI_CHECKS=true
-     source build/envsetup.sh && lunch wave_sakura-user
+     export ALLOW_MISSING_DEPENDENCIES=true
+     #export SKIP_ABI_CHECKS=true
+     source build/envsetup.sh && lunch evolution_RMX3031-eng
 }
 
 rom_nine(){
@@ -179,7 +179,7 @@ case "${rom}" in
     ;;
  "proton") rom_seven
     ;;
- "WaveOS") rom_eight
+ "Evo") rom_eight
     ;;
  "EvolutionOS") rom_nine
     ;;
@@ -248,7 +248,7 @@ case "${rom}" in
     ;;
  "POSP") brunch whyred -j18 2>&1 | tee build.log
     ;;
- "AwakenOS") make bacon -j18 2>&1 | tee build.log
+ "Evo")  make evolution -j18 2>&1 | tee build.log
     ;;
  "PBRP") make recoveryimage 2>&1 | tee build.log
     ;;
