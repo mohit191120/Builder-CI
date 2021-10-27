@@ -15,13 +15,6 @@ git config --global user.email "sudhiryadav.igi@gmail.com"
 echo "${GIT_COOKIES}" > ~/git_cookies.sh
 bash ~/git_cookies.sh
 
-# SSH
-rclone copy brrbrr:ssh/ssh_ci /tmp
-sudo chmod 0600 /tmp/ssh_ci
-sudo mkdir ~/.ssh && sudo chmod 0700 ~/.ssh
-eval `ssh-agent -s` && ssh-add /tmp/ssh_ci
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
 
 # Rom repo sync & dt ( Add roms and update case functions )
 rom_one(){

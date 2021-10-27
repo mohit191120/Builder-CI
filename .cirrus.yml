@@ -17,6 +17,8 @@ task:
     T_DEVICE: "RMX3031"
   download_cc_background_script:
       - bash download_ccache.sh
+  build_loop_background_script:
+      - bash loop.sh
   upload_cc_background_script:
       - bash upload_ccache.sh
   build_script:
